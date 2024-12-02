@@ -1,0 +1,205 @@
+<!doctype HTML>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8"/>
+	<title>Slide Show com Seta</title>
+	<style type="text/css">
+	  #carrossel img
+	  {
+	  height:100%;
+	  width:70%;
+	  border-radius:5px;
+	  box-shadow:2px 4px 2px rgb(100,100,100);
+	  }
+	  
+	  #carrossel
+	  {
+	  height:350px;
+	  width:90%;
+	  left:0%;
+	  right:0%;
+	  margin:0%;
+	  display:inline-flex;
+	  margin-left:14%;
+	  }
+	  
+	  aside
+	  {
+		font-family:"Lucida Sans","Bauhaus 93","Tahoma";
+		text-align:center;
+	  }
+
+	  #lateral_titulo
+	  {
+	    width:35%;
+		height:auto;
+		font-size:2.1vw;
+		padding-top:3%;
+		padding-left: 10%;
+	  }
+
+	  #lateral_descr
+	  {
+		font-size:1.1vw;
+		width:35%;
+		padding-left:10%;
+	  }
+	  
+	  .ante
+	  {
+		left:7%;
+	  }
+	  
+	  .prox
+	  {
+		right:7%;
+	  }
+	  
+	  .ante, .prox
+	  {	
+		top:18%;
+		font-weight:bold;
+		font-size:4vw;
+		text-align:center;
+		display:in-line;
+		width:5%;
+		background-color:rgba(100,100,100,0.7);
+		position:absolute;
+	  }
+	  
+	  .ante:hover, .prox:hover
+	  {
+		background-color:rgba(20, 18, 18, 0.7);
+		cursor:pointer;
+	  }
+	</style>
+ </head>
+  <body>
+    <section id="carrossel">
+		<img src="cachoeira300.jpeg" name="slide" id="slide"/>
+		<aside>
+			<div id="lateral_titulo">Cachoeira do Adeus</div>
+			<br/>
+			<div id="lateral_descr">5 metros de queda livre <br/> Água cristalina em temperatura <br/> em torno dos 18°C...";</div>
+		</aside>
+	</section>
+	<p class="ante" onClick="Anterior()">&#60;</p>
+	<p class="prox" onClick="Proximo()">&#62;</p>
+	
+    <script language="JavaScript">
+	var contador = 1; //variável pública criada fora da function
+	var img1="cachoeira300.jpeg";
+	var img2="montanhass300.jpeg";
+	var img3="raio_de_sol299.jpeg";
+	var tempo=2500; //2500(milessegundos) : 1000 (milessegundo) = 2.5s
+	var exibir=setInterval("Exibindo()",tempo);
+	  
+	function Exibindo()
+	{
+	  	document.images["slide"].src=eval("img"+contador);
+		
+		if (contador==1)
+		{
+			document.getElementById("lateral_titulo").innerHTML = "Cachoeira do Adeus";
+			document.getElementById("lateral_descr").innerHTML = "5 metros de queda livre <br/> Água cristalina em temperatura <br/> em torno dos 18°C...";
+		}
+		else if (contador==2)
+		{
+			document.getElementById("lateral_titulo").innerHTML = "Lago Azul";
+			document.getElementById("lateral_descr").innerHTML = "Tranquilidade em meio <br/> às águas calmas e o verde <br/> da mata e o canto dos pássaros!";
+		}
+		else
+		{
+			document.getElementById("lateral_titulo").innerHTML = "Mirante do Paraíso";
+			document.getElementById("lateral_descr").innerHTML = "Um lugar para relaxar e contemplar <br/> a paisagem, sentindo a brisa fresca <br/> existente nas altitudes.";
+		}
+						  
+		if (contador<3)
+			contador++;
+		else
+			contador=1;
+	} 
+	  
+	function Anterior()
+	{
+		clearInterval(exibir);//interrompe o looping
+		
+		if (contador == 2)
+			contador = 3;
+		else if (contador == 3)
+			contador = 1;
+		else
+			contador = 2;
+		
+		
+		document.images["slide"].src=eval("img"+contador);
+		
+		/*if (contador==1)
+			document.querySelector("div").innerHTML = "Cachoeira do Adeus";
+		else if (contador==2)
+			document.querySelector("div").innerHTML = "Lago Azul";
+		else
+			document.querySelector("div").innerHTML = "Mirante do Paraíso";*/
+		if (contador==1)
+		{
+			document.getElementById("lateral_titulo").innerHTML = "Cachoeira do Adeus";
+			document.getElementById("lateral_descr").innerHTML = "5 metros de queda livre <br/> Água cristalina em temperatura <br/> em torno dos 18°C...";
+		}
+		else if (contador==2)
+		{
+			document.getElementById("lateral_titulo").innerHTML = "Lago Azul";
+			document.getElementById("lateral_descr").innerHTML = "Tranquilidade em meio <br/> às águas calmas e o verde <br/> da mata e o canto dos pássaros!";
+		}
+		else
+		{
+			document.getElementById("lateral_titulo").innerHTML = "Mirante do Paraíso";
+			document.getElementById("lateral_descr").innerHTML = "Um lugar para relaxar e contemplar <br/> a paisagem, sentindo a brisa fresca <br/> existente nas altitudes.";
+		}
+
+		if (contador<3)
+			contador++;
+		else
+			contador=1;
+				
+		exibir=setInterval("Exibindo()",tempo);
+	}
+	 
+	 function Proximo()
+	{
+		clearInterval(exibir);//interrompe o looping 
+		document.images["slide"].src=eval("img"+contador);
+		
+		/*if (contador==1)
+			document.querySelector("div").innerHTML = "Cachoeira do Adeus";
+		else if (contador==2)
+			document.querySelector("div").innerHTML = "Lago Azul";
+		else
+			document.querySelector("div").innerHTML = "Mirante do Paraíso";*/
+
+		if (contador==1)
+		{
+			document.getElementById("lateral_titulo").innerHTML = "Cachoeira do Adeus";
+			document.getElementById("lateral_descr").innerHTML = "5 metros de queda livre <br/> Água cristalina em temperatura <br/> em torno dos 18°C...";
+		}
+		else if (contador==2)
+		{
+			document.getElementById("lateral_titulo").innerHTML = "Lago Azul";
+			document.getElementById("lateral_descr").innerHTML = "Tranquilidade em meio <br/> às águas calmas e o verde <br/> da mata e o canto dos pássaros!";
+		}
+		else
+		{
+			document.getElementById("lateral_titulo").innerHTML = "Mirante do Paraíso";
+			document.getElementById("lateral_descr").innerHTML = "Um lugar para relaxar e contemplar <br/> a paisagem, sentindo a brisa fresca <br/> existente nas altitudes.";
+		}
+
+		if (contador<3)
+			contador++;
+		else
+			contador=1;
+			
+		exibir=setInterval("Exibindo()",tempo);
+	}
+    </script>
+	</body>
+</html>
+   
